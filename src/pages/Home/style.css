@@ -1,0 +1,24 @@
+.container {
+    margin: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cardRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cardColumn {
+    display: flex;
+    flex-direction: column;
+}
+
