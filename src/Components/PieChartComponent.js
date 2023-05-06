@@ -3,14 +3,14 @@ import {Cell, LabelList, Pie, PieChart} from 'recharts';
 
 
 const data = [
-    { name: "Portugal", value: 500 },
-    { name: "Espanha", value: 400 },
-    { name: "França", value: 300 },
-    { name: "Alemanha", value: 200 },
-    { name: "Inglaterra", value: 100 },
-    { name: "Suécia", value: 50 },
-    { name: "Itália", value: 450 },
-    { name: "Polónia", value: 20 },
+    {name: "Portugal", value: 500},
+    {name: "Espanha", value: 400},
+    {name: "França", value: 300},
+    {name: "Alemanha", value: 200},
+    {name: "Inglaterra", value: 100},
+    {name: "Suécia", value: 50},
+    {name: "Itália", value: 450},
+    {name: "Polónia", value: 20},
 ];
 
 const COLORS = [];
@@ -49,10 +49,10 @@ export default class PieChartComponent extends PureComponent {
                     label={true}
                 >
                     {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
 
-                        ))}
-                    <LabelList dataKey="name" position="top" />
+                    ))}
+                    <LabelList dataKey="name" position="top"/>
 
                 </Pie>
 

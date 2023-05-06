@@ -1,171 +1,173 @@
 .App {
-  width: 100vw;
-  height: 100vh;
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Poppins;
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
 }
 
 .line {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .Sidebar {
-  height: 100vh;
-  width: 250px;
-  background-color: #2F4050;
+    height: 100vh;
+    width: 250px;
+    background-color: #2F4050;
 }
 
 .SidebarList {
-  height: 100%;
-  padding: 0;
-  width: 100%;
-} 
+    height: 100%;
+    padding: 0;
+    width: 100%;
+}
 
 .SidebarList .SidebarRow {
-  width: 100%;
-  height: 50px;
-  color: white;
-  list-style-type: none;
-  margin: 0%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 50px;
+    color: white;
+    list-style-type: none;
+    margin: 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .SidebarList .SidebarRow:hover {
-  cursor: pointer;
-  background-color: #293846;
+    cursor: pointer;
+    background-color: #293846;
 }
 
 .SidebarList #active {
-  background-color: #293846;
+    background-color: #293846;
 }
 
 .SidebarRow #icon {
-  flex: 30%;
-  display: grid;
-  place-items: center;
+    flex: 30%;
+    display: grid;
+    place-items: center;
 }
 
 .SidebarRow #title {
-  flex: 70%;
+    flex: 70%;
 }
 
 .SidebarLogo {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .SidebarLogoIcon {
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 65px;
-  max-height: 65px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 65px;
+    max-height: 65px;
 }
 
 .TopBarUserPicture {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 
 
 .SideBarUserInfo {
-  padding-top: 25px;  
-  padding-bottom: 25px;
-  width: 100%;
-  max-height: 60px;  color: white;
-  margin: 0%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 100%;
+    max-height: 60px;
+    color: white;
+    margin: 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .SideBarUserInfo #user_picture {
- flex: 30%;
- display: grid;
- place-items: center;
+    flex: 30%;
+    display: grid;
+    place-items: center;
 }
 
-.SideBarUserInfo #user_name{
-  display: 70%;
-  margin-left: 10px;
- }
+.SideBarUserInfo #user_name {
+    display: 70%;
+    margin-left: 10px;
+}
 
 .TopBar {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* adds a shadow border */
-  width: 100%;
-  height: 80px;  background-color: #f5f5f5;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* adds a shadow border */
+    width: 100%;
+    height: 80px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 .Topbar-user {
-  display: flex;
+    display: flex;
 }
 
 .TopBar-search {
-  flex: 40%;
+    flex: 40%;
 }
 
 /* Style for the search bar container */
 .search-bar {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 /* Style for the input element */
 .search-bar input[type="text"] {
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 300px;
-  font-size: 16px;
-  margin-right: 10px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    margin-right: 10px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Style for the search button */
 .search-bar button[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 0;
-  cursor: pointer;
-  border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .vertical-line::before {
-  content: "";
-  display: block;
-  width: 1px;
-  height: 100%;
-  background-color: yellow;
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: yellow;
 }
 
 

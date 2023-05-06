@@ -28,6 +28,7 @@ export const IconArrowForward = styled(ArrowForwardIosIcon)`
   ${IconCommonCss}
   align-self: flex-end;
   cursor: pointer;
+
   &:hover {
     fill: #2e4150;
   }
@@ -49,18 +50,18 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
 
-  ${({ hover }) =>
-    hover &&
-    css`
-      width: 50%;
-      -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
-      box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
-      border: 4px solid #00adb5;
+  ${({hover}) =>
+          hover &&
+          css`
+            width: 50%;
+            -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
+            box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
+            border: 4px solid #00adb5;
 
-      @media (min-width: 768px) {
-        width: 25%;
-      }
-    `}
+            @media (min-width: 768px) {
+              width: 25%;
+            }
+          `}
 `;
 
 export const SearchInput = styled.input`

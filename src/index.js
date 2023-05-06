@@ -7,26 +7,26 @@ import Users from "./pages/Users/Users";
 import Sidebar from "./Components/Sidebar";
 
 const router = createBrowserRouter([
-  {
-    element: <Sidebar />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/users",
-        element: <Users />,
-      },
-    ],
-  },
+    {
+        element: <Sidebar/>,
+        children: [
+            {
+                path: "/",
+                element: <Home/>,
+            },
+            {
+                path: "/users",
+                element: <Users/>,
+            },
+        ],
+    },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <React.StrictMode>
+        <RouterProvider router={router}/>
+    </React.StrictMode>
 );
 
 reportWebVitals();

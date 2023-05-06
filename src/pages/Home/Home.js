@@ -11,28 +11,28 @@ import HomeCardTopBarComponent from "../../Components/HomeCardTopComponent/HomeC
 
 
 function Home() {
-  return (
-    <div className="container">
-        <div className="row">
-            <HomeCardTopComponent name="Utilizadores Online"  icon={PeopleIcon}>
-                <HomeCardTopDescriptionComponent value="50 mil"/>
-            </HomeCardTopComponent>
-            <HomeCardTopComponent name="Transações Diárias"  icon={PaidIcon}>
-                <HomeCardTopDescriptionComponent value="777 mil"/>
-            </HomeCardTopComponent>
-            <HomeCardTopComponent name="Pedidos Respondidos"  icon={MailOutlineIcon}>
-                <HomeCardTopBarComponent value="5"/>
-            </HomeCardTopComponent>
-            <HomeCardTopComponent name="Total de Transações"  icon={AccountBalanceIcon}>
-                <HomeCardTopDescriptionComponent value="1 milhão"/>
-            </HomeCardTopComponent>
-        </div>
+    return (
+        <div className="container">
+            <div className="row">
+                <HomeCardTopComponent name="Utilizadores Online" icon={PeopleIcon}>
+                    <HomeCardTopDescriptionComponent value="50 mil"/>
+                </HomeCardTopComponent>
+                <HomeCardTopComponent name="Transações Diárias" icon={PaidIcon}>
+                    <HomeCardTopDescriptionComponent value="777 mil"/>
+                </HomeCardTopComponent>
+                <HomeCardTopComponent name="Pedidos Respondidos" icon={MailOutlineIcon}>
+                    <HomeCardTopBarComponent value="5"/>
+                </HomeCardTopComponent>
+                <HomeCardTopComponent name="Total de Transações" icon={AccountBalanceIcon}>
+                    <HomeCardTopDescriptionComponent value="1 milhão"/>
+                </HomeCardTopComponent>
+            </div>
 
-        <div className="row">
+            <div className="row">
 
+            </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default Home;
