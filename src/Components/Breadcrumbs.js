@@ -1,5 +1,5 @@
-import { Breadcrumbs, Link, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import {Breadcrumbs, Link, Typography} from "@mui/material";
+import {useLocation} from "react-router-dom";
 
 export default function BreadcrumbsComponent() {
   const location = useLocation();

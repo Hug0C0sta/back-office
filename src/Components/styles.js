@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, {css, keyframes} from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 

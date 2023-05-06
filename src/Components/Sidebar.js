@@ -1,10 +1,10 @@
 import React from "react";
 import "../App.css";
-import { SidebarData } from "./SidebarData";
-import { Link, Outlet } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import {SidebarData} from "./SidebarData";
+import {Link, Outlet, useLocation} from "react-router-dom";
 import Topbar from "./Topbar";
 import Logo from "../assets/logo/logo.png";
+
 export default function Sidebar() {
   let location = useLocation().pathname;
 

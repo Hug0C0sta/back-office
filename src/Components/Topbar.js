@@ -2,7 +2,6 @@ import SearchBar from "./SearchBar";
 import SearchBarData from "./searchBarAppData.json";
 import userPicture from "../assets/test/alonso.jpeg";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import MinimizeIcon from "@mui/icons-material/Minimize";
 import Divider from "@mui/material/Divider";
 
 export default function Topbar() {

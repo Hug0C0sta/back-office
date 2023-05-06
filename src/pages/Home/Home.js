@@ -1,84 +1,35 @@
 import React from "react";
 import "./style.css";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import PeopleIcon from '@mui/icons-material/People';
 
-const paises = [
-  { name: "Portugal", value: 500 },
-  { name: "Espanha", value: 400 },
-  { name: "França", value: 300 },
-  { name: "Alemanha", value: 200 },
-  { name: "Inglaterra", value: 100 },
-  { name: "Suécia", value: 50 },
-  { name: "Itália", value: 450 },
-  { name: "Polónia", value: 20 },
-];
+import PeopleIcon from '@mui/icons-material/People';
+import PaidIcon from '@mui/icons-material/Paid';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import HomeCardTopComponent from "../../Components/HomeCardTopComponent/HomeCardTopComponent";
+import HomeCardTopDescriptionComponent from "../../Components/HomeCardTopComponent/HomeCardTopDescriptionComponent";
+import HomeCardTopBarComponent from "../../Components/HomeCardTopComponent/HomeCardTopBarComponent";
+
 
 function Home() {
   return (
     <div className="container">
         <div className="row">
-            <Card sx={{ minWidth: 350 }}>
-                <div className="cardRow">
-                    <div className="cardColumn">
-                        <CardContent>
-                            <p>Utilizadores Online</p>
-                            <p>50 mil</p>
-                        </CardContent>
-                    </div>
-                    <div className="cardColumn">
-                        <CardContent>
-                            <PeopleIcon />
-                        </CardContent>
-                    </div>
-                </div>
-            </Card>
-            <Card sx={{ minWidth: 350 }}>
-                <div className="cardRow">
-                    <div className="cardColumn">
-                        <CardContent>
-                            <p>Utilizadores Online</p>
-                            <p>50 mil</p>
-                        </CardContent>
-                    </div>
-                    <div className="cardColumn">
-                        <CardContent>
-                            <PeopleIcon />
-                        </CardContent>
-                    </div>
-                </div>
-            </Card>
-            <Card sx={{ minWidth: 350 }}>
-                <div className="cardRow">
-                    <div className="cardColumn">
-                        <CardContent>
-                            <p>Utilizadores Online</p>
-                            <p>50 mil</p>
-                        </CardContent>
-                    </div>
-                    <div className="cardColumn">
-                        <CardContent>
-                            <PeopleIcon />
-                        </CardContent>
-                    </div>
-                </div>
-            </Card>
-            <Card sx={{ minWidth: 350 }}>
-                <div className="cardRow">
-                    <div className="cardColumn">
-                        <CardContent>
-                            <p>Utilizadores Online</p>
-                            <p>50 mil</p>
-                        </CardContent>
-                    </div>
-                    <div className="cardColumn">
-                        <CardContent>
-                            <PeopleIcon />
-                        </CardContent>
-                    </div>
-                </div>
-            </Card>
+            <HomeCardTopComponent name="Utilizadores Online"  icon={PeopleIcon}>
+                <HomeCardTopDescriptionComponent value="50 mil"/>
+            </HomeCardTopComponent>
+            <HomeCardTopComponent name="Transações Diárias"  icon={PaidIcon}>
+                <HomeCardTopDescriptionComponent value="777 mil"/>
+            </HomeCardTopComponent>
+            <HomeCardTopComponent name="Pedidos Respondidos"  icon={MailOutlineIcon}>
+                <HomeCardTopBarComponent value="5"/>
+            </HomeCardTopComponent>
+            <HomeCardTopComponent name="Total de Transações"  icon={AccountBalanceIcon}>
+                <HomeCardTopDescriptionComponent value="1 milhão"/>
+            </HomeCardTopComponent>
+        </div>
+
+        <div className="row">
+
         </div>
     </div>
   );

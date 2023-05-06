@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { Container, SearchInput, IconArrowForward, IconSearch } from "./styles";
+import {useEffect, useRef, useState} from "react";
+import {Container, IconArrowForward, IconSearch, SearchInput} from "./styles";
 
 export default function Search() {
   const targetRef = useRef(null);

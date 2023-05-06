@@ -1,9 +1,6 @@
 import React from "react";
 import "./style.css";
-import Search from "../../Components/Search";
-import CustomTable from "../../Components/CustomTable";
 import BreadcrumbsComponent from "../../Components/Breadcrumbs";
-import Topbar from "../../Components/Topbar";
 
 const columns = ["name", "username", "enabled", "actived", "user_group"];
 const rows = [
