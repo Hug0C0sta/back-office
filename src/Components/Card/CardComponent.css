@@ -1,0 +1,39 @@
+.cardRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.rowCardComponent {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.cardColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.cardInfo {
+    font-size: larger;
+}
+
+
+.cardTitleContainer {
+    display: flex;
+    align-items: center;
+}
+
+.iconContainer {
+    display: inline-flex;
+    margin-right: 8px;
+}
+
+.cardName {
+    font-size: larger;
+}
+
+
+
+

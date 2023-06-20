@@ -1,0 +1,73 @@
+.containerUserInfo {
+    padding: 35px;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.profileSpan3 {
+    grid-column: span 3;
+}
+
+.profileSpan5 {
+    grid-column: span 5;
+}
+
+.profileSpan {
+    grid-column: span 1;
+}
+
+.profileDetails {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.profileSpan2 {
+    grid-column: span 2;
+}
+
+.rightCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.rightCardTop {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rightCardBot {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.profilePicture {
+    width: auto;
+    height: 200px;
+}
+
+.media {
+    color: #9b2226;
+    font-weight: lighter;
+    font-size: x-large;
+}
+
+.mediaValor {
+    color: #005F73;
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 20px;
+}
+
+

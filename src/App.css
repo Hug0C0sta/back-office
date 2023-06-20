@@ -18,22 +18,22 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+
+
 }
 
 .Sidebar {
     height: 100vh;
     width: 250px;
-    background-color: #2F4050;
+    background-color: #011627;
 }
 
 .SidebarList {
-    height: 100%;
     padding: 0;
-    width: 100%;
+    min-width: 200px;
 }
 
 .SidebarList .SidebarRow {
-    width: 100%;
     height: 50px;
     color: white;
     list-style-type: none;
@@ -46,7 +46,8 @@ body {
 
 .SidebarList .SidebarRow:hover {
     cursor: pointer;
-    background-color: #293846;
+    background-color: #fdfffc;
+    color: #011627;
 }
 
 .SidebarList #active {
@@ -105,7 +106,7 @@ body {
 }
 
 .SideBarUserInfo #user_name {
-    display: 70%;
+    display: flex;
     margin-left: 10px;
 }
 
@@ -120,6 +121,7 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     box-sizing: border-box;
+
 }
 
 .Topbar-user {

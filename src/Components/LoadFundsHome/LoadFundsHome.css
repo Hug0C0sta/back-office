@@ -1,0 +1,10 @@
+.exchangeRateHomeRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.exchangeRateHomeCol {
+    display: flex;
+    flex-direction: column;
+
+}

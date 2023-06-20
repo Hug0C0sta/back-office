@@ -1,0 +1,28 @@
+.containerStores {
+    padding: 35px;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.storesSpan3 {
+    grid-column: span 2;
+}
+
+.storesSpan2 {
+    grid-column: span 1;
+}
+
+.inputStore {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.storeInputText2 {
+    grid-column: span 2;
+}
+
+.storeInputText1 {
+    grid-column: span 1;
+}

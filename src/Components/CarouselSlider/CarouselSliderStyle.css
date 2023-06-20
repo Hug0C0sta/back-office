@@ -1,0 +1,50 @@
+.carouselRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.carouselColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carouselImage {
+    margin-left: auto;
+}
+
+.carouselColumnIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carouselValue {
+    display: flex;
+    align-items: center;
+}
+
+.cardCounter {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.cardCircle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #A9A9A9;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cardCircle.active {
+    background-color: #2E4150;
+}
+
+
+
+
