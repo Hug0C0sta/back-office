@@ -10,7 +10,6 @@ import { green, red } from "@mui/material/colors";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
-import MoneyIcon from "@mui/icons-material/Money";
 import TablePagination from "@mui/material/TablePagination";
 import { useNavigate } from "react-router-dom";
 
@@ -102,11 +101,6 @@ export default function TableComponent(props) {
                     style={{ color: "#005F73", marginRight: "6px" }}
                     variant="outlined"
                     onClick={() => handleClick(row.id)}
-                  />
-                  <MoneyIcon
-                    style={{ color: "#9B2226" }}
-                    variant="outlined"
-                    onClick={() => handleEdit(row.id)}
                   />
                 </TableCell>
               )}

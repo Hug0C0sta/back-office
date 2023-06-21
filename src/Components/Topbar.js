@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import { SearchbarData } from "./SearchbarData";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";

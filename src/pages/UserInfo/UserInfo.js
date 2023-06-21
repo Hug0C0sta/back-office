@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./style.css";
 import {
-  Box,
   Button,
   FormControlLabel,
   MenuItem,
-  Popper,
   Switch,
   TextField,
 } from "@mui/material";
@@ -19,9 +17,12 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import FunctionsIcon from "@mui/icons-material/Functions";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MoneyIcon from "@mui/icons-material/Money";
-import EuroIcon from "@mui/icons-material/Euro";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
-import async from "async";
+
+import CarouselSliderComponent from "../../Components/CarouselSlider/CarouselSliderComponent";
+import Top5Sells from "../../Components/Top5Sells/Top5Sells";
+import FundsEachAcountBusiness from "../../Components/FundsEachAcountBusiness/FundsEachAcountBusiness";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const roles = [
   {
@@ -107,7 +108,7 @@ function UserInfo() {
 
   const [btnEdit, setBtnEdit] = useState(false);
 
-  const toggleEdit = () => {
+  const toggleEdit = (event) => {
     setBtnEdit((prevEdit) => !prevEdit);
   };
   const userNameRef = useRef("");
@@ -151,7 +152,11 @@ function UserInfo() {
       );
 
       setBtnEdit(false);
-      setAnchorEl(anchorEl ? null : event.currentTarget);
+      // Show success notification
+      toast.success("Utilizador atualizado com sucesso", {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 3000, // Duration in milliseconds
+      });
     } catch (error) {
       console.error(error);
     }
@@ -183,6 +188,9 @@ function UserInfo() {
   const [favoriteCurrency, setFavoriteCurrency] = useState();
   const [favoritePayment, setFavoritePayment] = useState();
   const [primaryFunds, setPrimaryFunds] = useState();
+  const [dailyTransactions, setDailyTransactions] = useState();
+  const [totalClients, setTotalClients] = useState();
+  const [lastTransactionBusiness, setLastTransactionBusiness] = useState();
 
   useEffect(() => {
     getAverageTransaction();
@@ -190,6 +198,9 @@ function UserInfo() {
     getFavoriteCurrency();
     getFavoritePayment();
     getPrimaryFunds();
+    getDailyTransactions();
+    getTotalClients();
+    getLastTransactionBusiness();
   }, []);
 
   const getAverageTransaction = async () => {
@@ -292,12 +303,117 @@ function UserInfo() {
     }
   };
 
+  const getDailyTransactions = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/v1/users/${id}/business/daily`,
+        {
+          headers: {
+            Accept: "*/*",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setDailyTransactions(response.data.amount);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getTotalClients = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/v1/users/${id}/business/number-customers`,
+        {
+          headers: {
+            Accept: "*/*",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setTotalClients(response.data.quantity);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const [loadItems, setLoadItems] = useState([]);
+
+  const getTop5Sells = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(
+        `http://localhost:8080/api/v1/users/${id}/business/top-sales`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setLoadItems(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const [loadItemsAccounts, setLoadItemsAccounts] = useState([]);
+
+  const getBusinessAcounts = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(
+        `http://localhost:8080/api/v1/users/${id}/business/accounts`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setLoadItemsAccounts(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getLastTransactionBusiness = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/v1/users/${id}/business/last-transaction/
+`,
+        {
+          headers: {
+            Accept: "*/*",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setLastTransactionBusiness(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getTop5Sells();
+    getBusinessAcounts();
+  }, []);
+
   if (!user || !lastTransaction) {
     return <p>Loading...</p>;
   }
 
   const lastTimeOnline = getRandomDayWithHour();
-
   return (
     <>
       <div className="containerUserInfo">
@@ -396,11 +512,7 @@ function UserInfo() {
               >
                 Guardar
               </Button>
-              <Popper id={idPopper} open={open} anchorEl={anchorEl}>
-                <Box sx={{ border: 1, p: 1, bgcolor: "background.paper" }}>
-                  The content of the Popper.
-                </Box>
-              </Popper>
+              <ToastContainer />
             </div>
           </CardComponent>
         </div>
@@ -449,7 +561,6 @@ function UserInfo() {
                           Online
                         </span>
 
-                        <Button>Adicionar Fundos</Button>
                         <a href={`/extrato/${user.id}`} target="_blank">
                           <Button>Extrato</Button>
                         </a>
@@ -472,7 +583,6 @@ function UserInfo() {
                           Ultima vez online: {lastTimeOnline}
                         </p>
                         <br />
-                        <Button>Adicionar Fundos</Button>
                         <a href={`/extrato/${user.id}`} target="_blank">
                           <Button>Extrato</Button>
                         </a>
@@ -486,8 +596,362 @@ function UserInfo() {
             </div>
           </CardComponent>
         </div>
+        {user.role.name === "DEFAULT" ? (
+          <>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Última Transação"
+                icon={BoltIcon}
+              >
+                {lastTransaction && lastTransaction.length === 0 ? (
+                  <p
+                    style={{
+                      textAlign: "center",
+                      fontWeight: "lighter",
+                      display: "flex",
+                      width: "100%",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "18px",
+                      color: "#9B2226",
+                    }}
+                  >
+                    Ainda não há transações.
+                  </p>
+                ) : (
+                  <>
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "lighter",
+                        fontSize: "30px",
+                        color: "#005F73",
+                      }}
+                    >
+                      {lastTransaction && lastTransaction[0].amount}
+                    </p>
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        fontSize: "20px",
+                        color: "#9B2226",
+                      }}
+                    >
+                      {lastTransaction && lastTransaction[0].externalName}
+                    </p>
+                  </>
+                )}
+              </CardComponent>
+            </div>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Média de Transações"
+                icon={FunctionsIcon}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    fontSize: "50px",
+                    color: "#9B2226",
+                  }}
+                >
+                  {averageTransaction + "€"}
+                </p>
+              </CardComponent>
+            </div>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Moeda Mais Utilizada"
+                icon={MoneyIcon}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "100%",
+                    marginTop: "45px",
+                  }}
+                >
+                  {favoriteCurrency && favoriteCurrency === "" ? (
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "lighter",
+                        fontSize: "40px",
+                        display: "flex",
+                        color: "#005F73",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginTop: "4px",
+                      }}
+                    >
+                      {favoriteCurrency}
+                    </p>
+                  ) : (
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "lighter",
+                        display: "flex",
+                        width: "100%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "18px",
+                        color: "#9B2226",
+                      }}
+                    >
+                      "Não realizou transferencias!"
+                    </p>
+                  )}
+                </div>
+              </CardComponent>
+            </div>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Fundos Conta Principal"
+                icon={AccountBalanceIcon}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    fontSize: "50px",
+                    color: "#9B2226",
+                  }}
+                >
+                  {primaryFunds}€
+                </p>
+              </CardComponent>
+            </div>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Mét. Pag. Preferido"
+                icon={MoneyIcon}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "100%",
+                    marginTop: "45px",
+                  }}
+                >
+                  {favoriteCurrency && favoriteCurrency === "" ? (
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "lighter",
+                        fontSize: "40px",
+                        display: "flex",
+                        color: "#005F73",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginTop: "4px",
+                      }}
+                    >
+                      {favoritePayment}
+                    </p>
+                  ) : (
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "lighter",
+                        display: "flex",
+                        width: "100%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "18px",
+                        color: "#9B2226",
+                      }}
+                    >
+                      "Não realizou transferencias!"
+                    </p>
+                  )}
+                </div>
+              </CardComponent>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Vendas Diárias"
+                icon={BoltIcon}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    fontSize: "50px",
+                    color: "#9B2226",
+                  }}
+                >
+                  {dailyTransactions}€
+                </p>
+              </CardComponent>
+            </div>
 
-        <div className="profileSpan"></div>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Fundos em cada conta"
+                icon={FunctionsIcon}
+              >
+                <CarouselSliderComponent items={loadItemsAccounts}>
+                  <FundsEachAcountBusiness />
+                </CarouselSliderComponent>
+              </CardComponent>
+            </div>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Número de Clientes"
+                icon={MoneyIcon}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "100%",
+                    marginTop: "45px",
+                  }}
+                >
+                  <p
+                    style={{
+                      textAlign: "center",
+                      fontWeight: "lighter",
+                      fontSize: "40px",
+                      display: "flex",
+                      color: "#005F73",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginTop: "4px",
+                    }}
+                  >
+                    {totalClients}
+                  </p>
+                </div>
+              </CardComponent>
+            </div>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Top Vendas"
+                icon={AccountBalanceIcon}
+              >
+                {loadItems && loadItems.length === 0 ? (
+                  <p
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textAlign: "center",
+                    }}
+                  >
+                    Ainda não tem vendas.
+                  </p>
+                ) : (
+                  <CarouselSliderComponent items={loadItems}>
+                    <Top5Sells />
+                  </CarouselSliderComponent>
+                )}
+              </CardComponent>
+            </div>
+            <div className="profileSpan">
+              <CardComponent
+                width="100%"
+                height="100%"
+                col="#333333"
+                fontCol="#333333"
+                name="Última Transação"
+                icon={BoltIcon}
+              >
+                {lastTransactionBusiness &&
+                lastTransactionBusiness.length === 0 ? (
+                  <p
+                    style={{
+                      textAlign: "center",
+                      fontWeight: "lighter",
+                      display: "flex",
+                      width: "100%",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "18px",
+                      color: "#9B2226",
+                    }}
+                  >
+                    Ainda não há transações.
+                  </p>
+                ) : (
+                  <>
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "lighter",
+                        fontSize: "30px",
+                        color: "#005F73",
+                      }}
+                    >
+                      {lastTransactionBusiness &&
+                        lastTransactionBusiness[0].amount}
+                    </p>
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        fontSize: "20px",
+                        color: "#9B2226",
+                      }}
+                    >
+                      {lastTransactionBusiness &&
+                        lastTransactionBusiness[0].externalName}
+                    </p>
+                  </>
+                )}
+              </CardComponent>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

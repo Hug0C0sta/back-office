@@ -2,7 +2,6 @@ import React from "react";
 import "./LoadFundsHome.css";
 
 export default function LoadFundsHome(props) {
-  console.log(props);
   return (
     <div className="exchangeRateHomeRow">
       <div className="exchangeRateHomeCol" style={{ marginRight: "10px" }}>

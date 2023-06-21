@@ -118,7 +118,6 @@ function Home() {
           },
         }
       );
-      console.log(response.data);
       setUtilizadoresRegistados(response.data);
     } catch (error) {
       console.error(error);
@@ -131,7 +130,8 @@ function Home() {
     !loadItemsDaily ||
     !loadItemsPie ||
     !loadItemsChart ||
-    !loadItems
+    !loadItems ||
+    !utilizadoresRegistados
   ) {
     return "Loading...";
   }

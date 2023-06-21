@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import Logo from "../../assets/logo/logo_preto.png";
-import { useLayoutEffect, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./style.css";
+
 export function Extrato() {
   const [userInfo, setUserInfo] = useState();
   const [transactions, setTransactions] = useState();

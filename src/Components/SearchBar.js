@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
+import { Link } from "react-router-dom";
 
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
